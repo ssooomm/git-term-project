@@ -29,4 +29,3 @@ dev 브랜치에서 협업 후 main에 배포<br>
 - branch에 작업한 내용을 dev에 Merge 후 main에 Merge하는 것이 익숙치 않아 바로 main에 merge함
 
 - git 활용능력 및 협업능력 향상
-- 
