@@ -13,71 +13,16 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
-
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-
-    .question {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    .answers {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    .answers li {
-      margin: 10px 0;
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-    }
-
-    .result {
-      font-size: 20px;
-      margin-top: 20px;
-    }
-  </style>
-
-
+  <link rel="stylesheet" href="css/quiz.css">
 </head>
 
 <body>
-
   <main>
     <div class="container py-4">
-      <header class="pb-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img">
-            <title>Bootstrap</title>
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
-              fill="currentColor"></path>
-          </svg>
-          <span class="fs-4">퀴즈 게임</span>
-        </a>
-      </header>
-
       <div class="p-5 mb-4 bg-light rounded-3">
         <div class="container-fluid py-5">
           <h1 class="display-5 fw-bold">QUIZ GAME</h1>
           <p class="col-md-8 fs-4">다양한 질문을 제시하고 플레이어가 답을 맞추는 게임입니다. 정답을 맞출 때마다 점수를 얻습니다.</p>
-          <!-- <button class="btn btn-primary btn-lg" type="button">Example button</button> -->
         </div>
       </div>
 
@@ -107,14 +52,8 @@
           </div>
         </div>
       </div>
-
-      <footer class="pt-3 mt-4 text-muted border-top">
-        &copy; 2021
-      </footer>
     </div>
   </main>
-
-
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -157,146 +96,6 @@
     </div>
   </div>
 
-  <script>
-    const quizData = [
-      {
-        question: "HTML의 약자는 무엇인가요?",
-        answers: ["Hyper Text Markup Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language"],
-        correct: "Hyper Text Markup Language"
-      },
-      {
-        question: "CSS는 무엇의 약자인가요?",
-        answers: ["Cascading Style Sheets", "Colorful Style Sheets", "Computer Style Sheets"],
-        correct: "Cascading Style Sheets"
-      },
-      {
-        question: "JavaScript는 어떤 언어인가요?",
-        answers: ["프로그래밍 언어", "마크업 언어", "스타일링 언어"],
-        correct: "프로그래밍 언어"
-      }
-    ];
-
-    let currentQuestion = 0;
-    let score = 0;
-
-    function loadQuestion() {
-      const questionElement = document.getElementById('question');
-      const answersElement = document.getElementById('answers');
-      const resultElement = document.getElementById('result');
-
-      resultElement.textContent = '';
-
-      questionElement.textContent = quizData[currentQuestion].question;
-      answersElement.innerHTML = '';
-
-      quizData[currentQuestion].answers.forEach(answer => {
-        const li = document.createElement('li');
-        const radio = document.createElement('input');
-        radio.type = 'radio';
-        radio.name = 'answer';
-        radio.value = answer;
-        li.appendChild(radio);
-        li.appendChild(document.createTextNode(answer));
-        answersElement.appendChild(li);
-      });
-    }
-
-    function checkAnswer() {
-      const answers = document.getElementsByName('answer');
-      let selectedAnswer;
-      for (const answer of answers) {
-        if (answer.checked) {
-          selectedAnswer = answer.value;
-          break;
-        }
-      }
-
-      if (selectedAnswer) {
-        if (selectedAnswer === quizData[currentQuestion].correct) {
-          score++;
-        }
-
-        currentQuestion++;
-        if (currentQuestion < quizData.length) {
-          loadQuestion();
-        } else {
-          showResult();
-        }
-      } else {
-        alert('답을 선택해주세요!');
-      }
-    }
-
-    function showResult() {
-      const resultElement = document.getElementById('result');
-      resultElement.textContent = `퀴즈가 끝났습니다! 당신의 점수는 ${score} / ${quizData.length} 입니다.`;
-    }
-
-    // 첫 번째 질문 로드
-    loadQuestion();
-  </script>
-
-
-  <script>
-    const quizData2 = [
-      {
-        question: "가장 큰 행성은 어느 것입니까?",
-        a: "지구",
-        b: "목성",
-        c: "화성",
-        d: "금성",
-        correct: "b"
-      },
-      {
-        question: "인류의 우주선이 처음으로 달에 착륙한 해는 언제입니까?",
-        a: "1965년",
-        b: "1969년",
-        c: "1971년",
-        d: "1975년",
-        correct: "b"
-      },
-      // 여기에 더 많은 질문을 추가할 수 있습니다.
-    ];
-
-    const questionEl = document.getElementById('question2');
-    const answersEl = document.getElementById('answers2');
-    const resultEl = document.getElementById('result2');
-
-    let currentQuestionIndex = 0;
-    let score2 = 0;
-
-    function loadQuestion2() {
-      if (currentQuestionIndex < quizData2.length) {
-        const currentQuestion = quizData2[currentQuestionIndex];
-
-        questionEl.innerText = currentQuestion.question;
-        answersEl.innerHTML = `
-        <li><button onclick="selectAnswer2('a')">A. ${currentQuestion.a}</button></li>
-        <li><button onclick="selectAnswer2('b')">B. ${currentQuestion.b}</button></li>
-        <li><button onclick="selectAnswer2('c')">C. ${currentQuestion.c}</button></li>
-        <li><button onclick="selectAnswer2('d')">D. ${currentQuestion.d}</button></li>
-      `;
-      } else {
-        showResults2();
-      }
-    }
-
-    function selectAnswer2(answer) {
-      if (answer === quizData2[currentQuestionIndex].correct) {
-        score2++;
-      }
-
-      currentQuestionIndex++;
-      loadQuestion2(); // 다음 질문을 로드합니다.
-    }
-
-    function showResults2() {
-      resultEl.innerHTML = `<h3>퀴즈가 완료되었습니다! 당신의 점수는 ${score2}/${quizData2.length}입니다.</h3>`;
-      answersEl.innerHTML = ""; // 마지막 결과 표시 후 답변 옵션을 제거합니다.
-    }
-
-    loadQuestion2(); // 페이지 로드 시 첫 번째 질문을 로드합니다.
-  </script>
 </body>
-
+<script src="js/quiz.js"></script>
 </html>
