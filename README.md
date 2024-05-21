@@ -22,3 +22,5 @@ dev 브랜치에서 협업 후 main에 배포<br>
 | 👩🏻‍💻 SooMin Oh | 🎓 Major D Class | https://github.com/ssooomm |
 | 👩🏻‍💻 NaKyung You | 🎓 Major D Class | https://github.com/ynk3132 |
 | 👨🏻‍💻 GwangMin Bae | 🎓 Major D Class | https://github.com/pangminwhere |
+
+## 프로젝트 진행 과정에서 배운점, 어려웠던 부분 기록
