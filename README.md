@@ -24,3 +24,9 @@ dev 브랜치에서 협업 후 main에 배포<br>
 | 👨🏻‍💻 GwangMin Bae | 🎓 Major D Class | https://github.com/pangminwhere |
 
 ## 프로젝트 진행 과정에서 배운점, 어려웠던 부분 기록
+- 서로 다른 브랜치를 생성하여 개인 작업 후 Merge 과정에서 Conflit 발생
+- git push명령어로 github에 PR요청 시 팀장에게만 요청 생성 문제 발생
+- branch에 작업한 내용을 dev에 Merge 후 main에 Merge하는 것이 익숙치 않아 바로 main에 merge함
+
+- git 활용능력 및 협업능력 향상
+- 
